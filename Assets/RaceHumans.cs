@@ -7,6 +7,7 @@ public class RaceHumans : MonoBehaviour {
     public int health = 300;
     public int speed = 15;
     public int damage = 20;
+	public string size = "medium";
     //Blue Faction
 
 

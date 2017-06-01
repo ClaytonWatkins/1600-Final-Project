@@ -7,6 +7,7 @@ public class RaceGoblins : MonoBehaviour {
     public int health = 100;
     public int speed = 40;
     public int damage = 10;
+	public string size = "small";
     //Green Faction
 
 

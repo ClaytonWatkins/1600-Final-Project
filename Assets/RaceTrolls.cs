@@ -7,6 +7,7 @@ public class RaceTrolls : MonoBehaviour {
     public int health = 400;
     public int speed = 10;
     public int damage = 25;
+	public string size = "large";
     //Green Faction
 
 

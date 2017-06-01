@@ -7,13 +7,14 @@ public class RaceElves : MonoBehaviour {
     public int health = 200;
     public int speed = 30;
     public int damage = 15;
+	public string size = "medium";
     //Blue Faction
 
 
 
 
     //FUNCTIONS
-    //hide when not in combat
+    //Hide when not in combat
     public float regen = 1.5f;
     public int attackRange = 2;
     public int attackSpeed = 2;
