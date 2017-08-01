@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TaskHidden : MonoBehaviour {
+public class ResourceTree : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
