@@ -22,7 +22,7 @@ public class RaceTrolls : MonoBehaviour {
 
     public Transform target;
 
-    void Start()
+    /*void Start()
     {
         target = GameObject.Find("BlueFaction").GetComponent<Transform>();
     }
@@ -31,11 +31,11 @@ public class RaceTrolls : MonoBehaviour {
     {
         transform.position = Vector3.Lerp(start.position, end.position, Time.deltaTime);
          = Vector3.Distance(target.position, transform.position);
-        }
+        }*/
     
 	// Update is called once per frame
 
-    {
+    
         //Scan spottingRange for Faction and Resources
         //if (!attack)
         //perform TaskHidden
@@ -61,6 +61,4 @@ public class RaceTrolls : MonoBehaviour {
         var player = GameObject.FindWithTag("Player");
 var rotate = Quaternion.LookRotation(closestEnemy.transform.position - transform.position);
 transform.rotation = Quaternion.Slerp(transform.rotation, rotate, Time.deltaTime* turnSpeed);
-     }*/
-
-}
+     */}

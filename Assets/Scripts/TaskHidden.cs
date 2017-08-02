@@ -7,7 +7,7 @@ public class TaskHidden : MonoBehaviour {
         public float speed = 20;
 
 	// Use this for initialization
-	void Start () {
+	/*void Start () {
 	
 	}
 	if OnTriggerStay(Collider enemy);{
@@ -39,11 +39,5 @@ public class TaskHidden : MonoBehaviour {
 
             }
         }
-    }
-
-}
-    // Update is called once per frame
-    void Update () {
-	
-	}
+    }*/
 }

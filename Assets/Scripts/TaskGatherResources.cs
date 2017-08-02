@@ -10,15 +10,9 @@ public class TaskGatherResources : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!attack){
-			WaitUntil 3sec = moveToResourcePoint
-				
-				
-			
 	}
 }

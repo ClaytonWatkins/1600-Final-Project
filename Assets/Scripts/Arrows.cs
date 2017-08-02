@@ -2,23 +2,22 @@
 using System.Collections;
 
 public class Arrows : MonoBehaviour {
+    
+	public float damage = 10;
+	public float time = 4;
 
-    public float damage = 15.0;
-    private float target = GameObject;
- 
- // Destroy bullet after collision, spawn an explosion prefab and send message to hit object
- 
- void Start()
-    {
-        target = GameObject.FindWithTag("GreenFaction");
-    }
+	void Start(){
 
-   void OnCollisionEnter()
-    {
-        if GameObject.nameTag ("GreenFaction")
-        // Apply damage to target object
-        target.collider(damage, SendMessageOptions.DontRequireReceiver);
-
-        // Destroy missile
-        Destroy(gameObject);
+			Destroy (gameObject, time);
         }
+
+	void OnCollisionEnter(Collision other)
+	{   
+ 		var hit = other.gameObject;
+		var health = hit.GetComponent<GreenFaction>();      
+
+		if (health != null){
+			health.TakeDamage(damage);
+		}
+	}
+}
