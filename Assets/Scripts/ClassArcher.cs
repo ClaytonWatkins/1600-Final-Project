@@ -33,7 +33,7 @@ public class ClassArcher : MonoBehaviour {
         IEnumerator GetNewTarget(){
         GameObject[] possibleTargets;
         possibleTargets = GameObject.FindGameObjectsWithTag("GreenFaction");
-        if (possibleTargets.Length < 75){
+        if (possibleTargets.Length > 0){
             randomTarget = Random.Range(0, possibleTargets.Length);
             target = possibleTargets[randomTarget].transform;
         }return null; //patrol

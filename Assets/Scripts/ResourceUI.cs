@@ -29,6 +29,8 @@ void Update(){
     gText.text = " " + BlueFaction.AddGPoints;
     bText.text = " " + GreenFaction.AddBPoints;
     gRText.text = " " + ResourceTree.treeAddGPoints;
+
+	gRtext.text = " " + GreenSpawner.useResources;
 }
 }
 /*public void Reset(){

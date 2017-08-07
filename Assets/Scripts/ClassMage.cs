@@ -22,18 +22,7 @@ public class ClassMage : MonoBehaviour {
     void Start(){
         StartCoroutine(ShootArrows());
     }
-	void OnTriggerStay (Collider other)	{
-		while (target != null){            
-            ShootArrows();
-        }
-    }
-        IEnumerator ShootArrows(){
-            yield return new WaitForSeconds(attackSpeed);
-            Rigidbody clone;
-            clone = (Rigidbody)Instantiate(projectile, Spawnpoint.position, Spawnpoint.rotation);
-	        clone.velocity = Spawnpoint.TransformDirection (Vector3.forward*shootSpeed);
-        }
-    void Update() {
+        void Update() {
         if (target == null){
             GetNewTarget();
         }
@@ -45,9 +34,20 @@ public class ClassMage : MonoBehaviour {
         IEnumerator GetNewTarget(){
         GameObject[] possibleTargets;
         possibleTargets = GameObject.FindGameObjectsWithTag("BlueFaction");
-        if (possibleTargets.Length < spottingRange){
+        if (possibleTargets.Length < 0){
             randomTarget = Random.Range(0, possibleTargets.Length);
             target = possibleTargets[randomTarget].transform;
         }return null;
     }
+	void OnTriggerStay (Collider other)	{
+		while (target != null){            
+            ShootArrows();
+        }
+    }
+        IEnumerator ShootArrows(){
+            yield return new WaitForSeconds(attackSpeed);
+            Rigidbody clone;
+            clone = (Rigidbody)Instantiate(projectile, Spawnpoint.position, Spawnpoint.rotation);
+	        clone.velocity = Spawnpoint.TransformDirection (Vector3.forward*shootSpeed);
+        }
 }
