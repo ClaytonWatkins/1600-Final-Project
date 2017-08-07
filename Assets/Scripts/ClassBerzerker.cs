@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ClassWarrior : MonoBehaviour {
+public class ClassBerzerker : MonoBehaviour {
 
     //PROPERTIES
     //Armor (armor = armor * 1)
-    public int cost = 20;
-    public float moveSpeed = 10f;
+    public int cost = 30;
+    public float moveSpeed = 15f;
     public Transform target;
     public float attackSpeed = 5f;
     public float spottingRange = 35f;
-    public float damage = 15f;
+    public float damage = 20f;
     public int randomTarget;
     public int randomResource;
-    public int attackCooldown = 3;
+    public int attackCooldown = 4;
 
     //FUNCTIONS
     //Snipe from hidden
@@ -41,13 +41,13 @@ public class ClassWarrior : MonoBehaviour {
     }
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.gameObject.CompareTag("GreenFaction")){
+		if (other.gameObject.CompareTag("BlueFaction")){
             GetNewTarget();
 		}
 	}
         IEnumerator GetNewTarget(){
         GameObject[] possibleTargets;
-        possibleTargets = GameObject.FindGameObjectsWithTag("GreenFaction");
+        possibleTargets = GameObject.FindGameObjectsWithTag("BlueFaction");
         if (possibleTargets.Length < spottingRange){
             randomTarget = Random.Range(0, possibleTargets.Length);
             target = possibleTargets[randomTarget].transform;
@@ -55,9 +55,9 @@ public class ClassWarrior : MonoBehaviour {
     }
     void OnCollisionStay(Collision other)
 	{ 
-        if (other.gameObject.CompareTag("GreenFaction")){
+        if (other.gameObject.CompareTag("BlueFaction")){
         var hit = other.gameObject;
-        var health = hit.GetComponent<GreenFaction>();
+        var health = hit.GetComponent<BlueFaction>();
         if (health != null);    
             health.TakeDamage(damage);
     }

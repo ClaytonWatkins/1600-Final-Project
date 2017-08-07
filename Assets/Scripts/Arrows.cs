@@ -7,14 +7,13 @@ public class Arrows : MonoBehaviour {
 	public float time = 4;
 
 	void Start(){
-
 			Destroy (gameObject, time);
         }
 
 	void OnCollisionEnter(Collision other)
-	{   
- 		var hit = other.gameObject;
-		var health = hit.GetComponent<GreenFaction>();      
+	{
+		var hit = other.gameObject;
+		var health = hit.GetComponent<GreenFaction>();
 
 		if (health != null){
 			health.TakeDamage(damage);

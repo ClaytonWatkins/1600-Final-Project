@@ -8,36 +8,28 @@ public class BlueFaction : MonoBehaviour {
     public float regen;
     public const float maxHealth = 100f;
     public float currentHealth = maxHealth;
-	public string size = "medium";
-	public Transform spawnPoint;
+	public static int AddGPoints;
+	public int points;
 
-	void OnCollisionEnter(Collision other){
+	void Update(){
+		if (currentHealth < maxHealth);
 		StartCoroutine(Regen());
 		}
-
 	IEnumerator Regen(){
-		while(currentHealth<maxHealth){
-			yield return new WaitForSeconds(3);
-			print("Health at " + currentHealth);			
-			currentHealth += regen;
-            }
+		while (currentHealth < maxHealth){
+			HealthRegen();
+			yield return new WaitForSeconds(5);
 		}
-	/*void Update(){
-		HP.text = currentHealth.ToString();
-		maxHP.text = maxHealth.ToString();	
-		}*/
-
+	}
 	public void TakeDamage(float amount){
 		currentHealth -= amount;
 		if (currentHealth <= 0){
 			currentHealth = 0;
+			AddGPoints += points;
 			Destroy (gameObject);
-            //add points to score for killing the wolf
-			/*scoreManager.addPoints(points);*/
-            //move wolf to spawn point
-            /*transform.position = spawnPoint.position;
-			transform.rotation = spawnPoint.rotation;*/
-            currentHealth = maxHealth;
 		}
+	}
+	public void HealthRegen(){
+		currentHealth += regen;
 	}
 }
