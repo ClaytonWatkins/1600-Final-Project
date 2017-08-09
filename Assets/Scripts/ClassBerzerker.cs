@@ -44,8 +44,11 @@ public class ClassBerzerker : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.gameObject.CompareTag("BlueFaction")){
+		if (target != null);{
             GetNewTarget();
+            }
+        if (other.gameObject.CompareTag("BlueFaction")){
+            
 		}
 	}
 
@@ -63,7 +66,7 @@ public class ClassBerzerker : MonoBehaviour {
             DamageBlue();
     }
     IEnumerator DamageBlue(){
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
             BlueFaction.TakeDamage(damage);
             }
     }

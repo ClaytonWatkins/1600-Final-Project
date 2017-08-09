@@ -55,10 +55,10 @@ public class ClassWarrior : MonoBehaviour {
     }
     void OnCollisionStay(Collision other){ 
         if (other.gameObject.CompareTag("GreenFaction"));
-            StartCoroutine(DamageGreen());
+            DamageGreen();
     }
     IEnumerator DamageGreen(){
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
             GreenFaction.TakeDamage(damage);
             }
     }

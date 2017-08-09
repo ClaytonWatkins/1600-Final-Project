@@ -6,11 +6,12 @@ public class BlueFaction : MonoBehaviour {
 
     //PROPERTIES
     public float regen;
-    public const float maxHealth = 100f;
+    public const float maxHealth = 20f;
     public static float currentHealth = maxHealth;
+	public float health = currentHealth;
 	public static int AddGPoints;
 	public int points;
-	public float repeatTime = 5f;
+	public float repeatTime = 10f;
 
 	void Awake(){
 		currentHealth = maxHealth;
@@ -22,6 +23,7 @@ public class BlueFaction : MonoBehaviour {
 			currentHealth += regen;
 		}
 	}
+
 	public void Update(){
 		if (currentHealth <= 0){
 			currentHealth = 0;

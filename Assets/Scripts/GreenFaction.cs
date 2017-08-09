@@ -6,13 +6,15 @@ public class GreenFaction : MonoBehaviour {
 
     //PROPERTIES
     public float regen;
-    public const float maxHealth = 100f;
+    public const float maxHealth = 20f;
     public static float currentHealth = maxHealth;
+	public float health = currentHealth;
 	public static int AddBPoints;
 	public int points;
-	public float repeatTime = 5f;
+	public float repeatTime = 10f;
 
 	void Awake(){
+		currentHealth = maxHealth;
 		InvokeRepeating("Regen", 2f, repeatTime);
 	}
 	
