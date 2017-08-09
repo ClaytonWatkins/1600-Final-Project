@@ -53,13 +53,12 @@ public class ClassWarrior : MonoBehaviour {
             target = possibleTargets[randomTarget].transform;
         }return null;
     }
-    void OnCollisionStay(Collision other)
-	{ 
-        if (other.gameObject.CompareTag("GreenFaction")){
-        var hit = other.gameObject;
-        var health = hit.GetComponent<GreenFaction>();
-        if (health != null);    
-            health.TakeDamage(damage);
+    void OnCollisionStay(Collision other){ 
+        if (other.gameObject.CompareTag("GreenFaction"));
+            StartCoroutine(DamageGreen());
     }
-}
-}
+    IEnumerator DamageGreen(){
+        yield return new WaitForSeconds(3);
+            GreenFaction.TakeDamage(damage);
+            }
+    }

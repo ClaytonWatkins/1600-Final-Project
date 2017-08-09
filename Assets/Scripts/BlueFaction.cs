@@ -7,29 +7,29 @@ public class BlueFaction : MonoBehaviour {
     //PROPERTIES
     public float regen;
     public const float maxHealth = 100f;
-    public float currentHealth = maxHealth;
+    public static float currentHealth = maxHealth;
 	public static int AddGPoints;
 	public int points;
+	public float repeatTime = 5f;
 
-	void Update(){
-		if (currentHealth < maxHealth);
-		StartCoroutine(Regen());
-		}
-	IEnumerator Regen(){
-		while (currentHealth < maxHealth){
-			HealthRegen();
-			yield return new WaitForSeconds(5);
+	void Awake(){
+		currentHealth = maxHealth;
+		InvokeRepeating("Regen", 2f, repeatTime);
+	}
+
+	void Regen(){
+		if (currentHealth < maxHealth){
+			currentHealth += regen;
 		}
 	}
-	public void TakeDamage(float amount){
-		currentHealth -= amount;
+	public void Update(){
 		if (currentHealth <= 0){
 			currentHealth = 0;
-			AddGPoints += points;
-			Destroy (gameObject);
+			ResourceUI.AddGPoints(points);
+			Destroy (gameObject);}
 		}
-	}
-	public void HealthRegen(){
-		currentHealth += regen;
-	}
+
+	public static void TakeDamage(float damage){
+		currentHealth -= damage;
+		}
 }

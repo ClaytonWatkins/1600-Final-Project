@@ -14,15 +14,15 @@ public class ClassMage : MonoBehaviour {
 	public Transform Spawnpoint;
 	public float shootSpeed = 50f;
     public int randomTarget;
-    //public myTarget GameObject;
-    //public myTargets GameObject.FindWithClass ("BlueFaction");
 
     //FUNCTIONS
     //Snipe from hidden
-    void Start(){
-        StartCoroutine(ShootArrows());
+   void Awake()
+    {
+        GetNewTarget();
     }
-        void Update() {
+
+    void Update() {
         if (target == null){
             GetNewTarget();
         }
@@ -31,19 +31,23 @@ public class ClassMage : MonoBehaviour {
 			transform.Translate(Vector3.forward*moveSpeed*Time.deltaTime);
         }
     }
+    
         IEnumerator GetNewTarget(){
         GameObject[] possibleTargets;
         possibleTargets = GameObject.FindGameObjectsWithTag("BlueFaction");
-        if (possibleTargets.Length < 0){
+        if (possibleTargets.Length > 0){
             randomTarget = Random.Range(0, possibleTargets.Length);
             target = possibleTargets[randomTarget].transform;
-        }return null;
+        }return null; //patrol
     }
-	void OnTriggerStay (Collider other)	{
-		while (target != null){            
-            ShootArrows();
+	
+    void OnTriggerStay (Collider other)	
+    {
+		while (other.gameObject.CompareTag("BlueFaction")){            
+             ShootArrows();
         }
     }
+
         IEnumerator ShootArrows(){
             yield return new WaitForSeconds(attackSpeed);
             Rigidbody clone;

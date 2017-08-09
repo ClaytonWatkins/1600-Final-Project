@@ -12,11 +12,7 @@ public class Spell : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other)
 	{
-		var hit = other.gameObject;
-		var health = hit.GetComponent<BlueFaction>();
-
-		if (health != null){
-			health.TakeDamage(damage);
-		}
+		if (other.gameObject.CompareTag("BlueFaction"));
+			BlueFaction.TakeDamage(damage);
 	}
 }

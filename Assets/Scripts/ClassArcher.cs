@@ -21,6 +21,7 @@ public class ClassArcher : MonoBehaviour {
     {
         GetNewTarget();
     }
+
     void Update() {
         if (target == null){
             GetNewTarget();
@@ -30,6 +31,7 @@ public class ClassArcher : MonoBehaviour {
 			transform.Translate(Vector3.forward*moveSpeed*Time.deltaTime);
         }
     }
+    
         IEnumerator GetNewTarget(){
         GameObject[] possibleTargets;
         possibleTargets = GameObject.FindGameObjectsWithTag("GreenFaction");
@@ -38,12 +40,14 @@ public class ClassArcher : MonoBehaviour {
             target = possibleTargets[randomTarget].transform;
         }return null; //patrol
     }
-	void OnCollisionStay (Collision other)	
+	
+    void OnTriggerStay (Collider other)	
     {
-		while (target != null){            
+		while (other.gameObject.CompareTag("GreenFaction")){            
             ShootArrows();
         }
     }
+    
         IEnumerator ShootArrows(){
             yield return new WaitForSeconds(attackSpeed);
             Rigidbody clone;

@@ -22,6 +22,7 @@ public class ClassBerzerker : MonoBehaviour {
     {
         ResourceTree();
     }
+
     void Update() {
         if (target == null){
             ResourceTree();
@@ -31,6 +32,7 @@ public class ClassBerzerker : MonoBehaviour {
 			transform.Translate(Vector3.forward*moveSpeed*Time.deltaTime);
         }
     }
+
         IEnumerator ResourceTree(){
         GameObject[] resources;
         resources = GameObject.FindGameObjectsWithTag("ResourceTree");
@@ -39,12 +41,14 @@ public class ClassBerzerker : MonoBehaviour {
             (target) = resources[randomResource].transform;
         }return null;
     }
+
 	void OnTriggerEnter (Collider other)
 	{
 		if (other.gameObject.CompareTag("BlueFaction")){
             GetNewTarget();
 		}
 	}
+
         IEnumerator GetNewTarget(){
         GameObject[] possibleTargets;
         possibleTargets = GameObject.FindGameObjectsWithTag("BlueFaction");
@@ -53,13 +57,13 @@ public class ClassBerzerker : MonoBehaviour {
             target = possibleTargets[randomTarget].transform;
         }return null;
     }
-    void OnCollisionStay(Collision other)
-	{ 
-        if (other.gameObject.CompareTag("BlueFaction")){
-        var hit = other.gameObject;
-        var health = hit.GetComponent<BlueFaction>();
-        if (health != null);    
-            health.TakeDamage(damage);
+
+    void OnCollisionStay (Collision other){ 
+        if (other.gameObject.CompareTag("BlueFaction"));
+            DamageBlue();
     }
-}
-}
+    IEnumerator DamageBlue(){
+        yield return new WaitForSeconds(3);
+            BlueFaction.TakeDamage(damage);
+            }
+    }

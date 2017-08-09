@@ -7,29 +7,30 @@ public class GreenFaction : MonoBehaviour {
     //PROPERTIES
     public float regen;
     public const float maxHealth = 100f;
-    public float currentHealth = maxHealth;
+    public static float currentHealth = maxHealth;
 	public static int AddBPoints;
 	public int points;
+	public float repeatTime = 5f;
 
-	void Update(){
-		if (currentHealth < maxHealth);
-		StartCoroutine(Regen());
-		}
-	IEnumerator Regen(){
-		while (currentHealth < maxHealth){
-			HealthRegen();
-			yield return new WaitForSeconds(5);
+	void Awake(){
+		InvokeRepeating("Regen", 2f, repeatTime);
+	}
+	
+	void Regen(){
+		if (currentHealth < maxHealth){
+			currentHealth += regen;
 		}
 	}
-	public void TakeDamage(float amount){
-		currentHealth -= amount;
+
+	void Update(){
 		if (currentHealth <= 0){
 			currentHealth = 0;
-			AddBPoints += (points);
+			ResourceUI.AddBPoints(points);
 			Destroy (gameObject);
 		}
 	}
-	public void HealthRegen(){
-		currentHealth += regen;
-	}
+
+	public static void TakeDamage(float damage){
+		currentHealth -= damage;
+		}
 }

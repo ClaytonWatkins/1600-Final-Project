@@ -5,20 +5,24 @@ public class ResourceTree : MonoBehaviour {
 
 	public static int treeAddGPoints;
 	public static int treeAddBPoints;
-	public int points = 5;
-	public bool trees = false;
+	public int points;
+	public bool tree = false;
 
-	void OnTriggerStay (Collider other){
+	void OnTriggerEnter (Collider other){
 		if (other.gameObject.CompareTag("GreenFaction"));
-			StartCoroutine(treeAdds());
-			trees = true;
+		tree = true;
+		InvokeRepeating("treeAdd", 2F, 5F);
 	}
-		IEnumerator treeAdds(){
-			if (trees = true);
-			yield return new WaitForSeconds(5);	
-			treeAddsG();
-    }
-	public void treeAddsG(){
-		treeAddGPoints += (points);
+
+	void OnTriggerExit (Collider other){
+		if (other.gameObject.CompareTag("GreenFaction"));
+			tree = false;
+			CancelInvoke();
+	}
+
+	void treeAdd(){
+		if (tree = true){
+			ResourceUI.treeAddGPoints(points);
 		}
+	}
 }

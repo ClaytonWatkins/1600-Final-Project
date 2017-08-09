@@ -12,11 +12,7 @@ public class Arrows : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other)
 	{
-		var hit = other.gameObject;
-		var health = hit.GetComponent<GreenFaction>();
-
-		if (health != null){
-			health.TakeDamage(damage);
-		}
+		if (other.gameObject.CompareTag("GreenFaction"));
+			GreenFaction.TakeDamage(damage);
 	}
 }
